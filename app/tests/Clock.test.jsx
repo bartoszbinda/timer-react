@@ -32,5 +32,12 @@ describe('Clock', () => {
       var actual = clock.formatSeconds(seconds);
       expect(actual).toBe(expected);
     });
+    it('should format 61 seconds', () => {
+      var clock = TestUtils.renderIntoDocument(<Clock/>);
+      var seconds = 61;
+      var expected = '01:01';
+      var actual = clock.formatSeconds(seconds);
+      expect(actual).toBe(expected);
+    });
   });
 });

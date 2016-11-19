@@ -14,6 +14,9 @@ module.exports = function (config) {
         timeout: '5000'
       }
     },
+    'plugins' : [
+    'karma-mocha', 'karma-webpack', 'karma-sourcemap-loader', 'karma-chrome-launcher', 'mocha', 'karma-mocha-reporter'
+],
     webpack: webpackConfig,
     webpackServer: {
       noInfo: true

@@ -21,5 +21,14 @@ describe("Countdown", () => {
         done();
       },1001);
     });
+    it('shouldnt go to negative number', (done) => {
+      var countdown = TestUtils.renderIntoDocument(<Countdown/>);
+      countdown.handleSetCountdown(1);
+      expect(countdown.state.countdownStatus).toBe("started");
+      setTimeout(() => {
+        expect(countdown.state.count).toBe(0);
+        done();
+      },3001);
+    })
   });
 });

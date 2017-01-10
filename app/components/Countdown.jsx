@@ -26,6 +26,15 @@ var Countdown = React.createClass({
       }
     }
   },
+  componentDidMount: function() {
+    console.log("componentDidMount");
+  },
+  componentWillMount: function () {
+    console.log("componentWillMount");
+  },
+  componentWillUnmount: function () {
+    console.log('componentDidUnmount');
+  },
   startTimer: function () {
       this.timer = setInterval(() => {
         var newCount = this.state.count - 1;

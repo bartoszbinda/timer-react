@@ -23,7 +23,8 @@ describe('Controls', () => {
       var $startButton = $el.find('button:contains(Start)');
 
       expect($startButton.length).toBe(1);
-      
-    })
+    });
+     
+
   });
 });

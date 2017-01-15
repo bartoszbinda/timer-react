@@ -39,7 +39,19 @@ describe("Countdown", () => {
       setTimeout(() => {
         expect(countdown.state.count).toBe(10);
         done();
-      }, 3001);
+      }, 1001);
+
+      });
+      it('when stopped, count should still be 0', (done) => {
+        var countdown = TestUtils.renderIntoDocument(<Countdown/>);
+        countdown.handleSetCountdown(10);
+        expect(countdown.state.countdownStatus).toBe('started');
+        countdown.handleStatusChange('stopped');
+        expect(countdown.state.countdownStatus).toBe('stopped');
+        setTimeout(() => {
+          expect(countdown.state.count).toBe(0);
+          done();
+        }, 1001);
       });
     });
   });

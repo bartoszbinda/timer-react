@@ -29,6 +29,17 @@ describe("Countdown", () => {
         expect(countdown.state.count).toBe(0);
         done();
       },3001);
-    })
+    });
+    it('when paused, count should still be the same', (done) => {
+      var countdown = TestUtils.renderIntoDocument(<Countdown/>);
+      countdown.handleSetCountdown(10);
+      expect(countdown.state.countdownStatus).toBe('started');
+      countdown.handleStatusChange('paused');
+      expect(countdown.state.countdownStatus).toBe('paused');
+      setTimeout(() => {
+        expect(countdown.state.count).toBe(10);
+        done();
+      }, 3001);
+      });
+    });
   });
-});

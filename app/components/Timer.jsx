@@ -1,12 +1,14 @@
 var React = require('react');
 var Clock = require('Clock');
 var Controls = require('Controls');
+var TimerForm = require('TimerForm');
 
 var Timer = React.createClass({
   getInitialState: function() {
     return {
       count: 0,
-      countdownStatus: 'stopped'
+      countdownStatus: 'stopped',
+      limit: undefined
     };
   },
   handleStatusChange: function(newStatus) {
@@ -14,10 +16,11 @@ var Timer = React.createClass({
         countdownStatus: newStatus
       });
   },
-  handleSetCountdown: function() {
+  handleSetCountdown: function(seconds) {
     this.setState({
       countdownStatus: 'started',
-      count: 0
+      count: 0,
+      limit: seconds
     });
   },
   componentDidUpdate: function(prevProps, prevState){
@@ -40,25 +43,35 @@ var Timer = React.createClass({
   startTimer: function() {
     this.timer = setInterval(() => {
       var newCount = this.state.count + 1;
+      if (newCount > this.state.limit)
+      {
+        this.setState({
+          countdownStatus: 'stopped'
+        });
+        return;
+      }
+      else {
       this.setState({
         count: newCount
       });
+    }
 
     }, 1000);
   },
   render: function (){
-    var {count, countdownStatus} = this.state;
+    var {count, countdownStatus, limit} = this.state;
     var renderControlArea = () => {
       if (countdownStatus !== 'stopped') {
       return <Controls countdownStatus={countdownStatus} onStatusChange={this.handleStatusChange} />
       } else {
-        return <button className="button primary" onClick={this.handleSetCountdown}>Start</button>
+        return <TimerForm onSetCountdown={this.handleSetCountdown} />
       }
 
     };
     return (
     <div>
       <h1 className="page-title">Timer</h1>
+      <article>Write unlimited or b to have an unlimited timer</article>
       <Clock totalSeconds={count} />
       <div className="controls">{renderControlArea()} </div>
     </div>

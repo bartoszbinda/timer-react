@@ -23,6 +23,10 @@ var Timer = React.createClass({
       limit: seconds
     });
   },
+  componentWillUnmount: function() {
+    clearInterval(this.timer);
+    this.timer = undefined;
+  },
   componentDidUpdate: function(prevProps, prevState){
     if(this.state.countdownStatus !== prevState.countdownStatus)
     {

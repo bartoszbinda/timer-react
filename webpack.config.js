@@ -4,7 +4,8 @@ module.exports = {
   entry: [
   'script!jquery/dist/jquery.min.js',
   'script!foundation-sites/dist/foundation.min.js',
-  './app/app.jsx'],
+  './app/app.jsx'
+],
   externals: {
     jquery: 'jQuery'
   },
@@ -23,12 +24,6 @@ module.exports = {
     alias: {
       Main: 'app/components/Main.jsx',
       Nav: 'app/components/Nav.jsx',
-      Timer: 'app/components/Timer.jsx',
-      Countdown: 'app/components/Countdown.jsx',
-      Clock: 'app/components/Clock.jsx',
-      CountdownForm: 'app/components/CountdownForm.jsx',
-      Controls: 'app/components/Controls.jsx',
-      TimerForm: 'app/components/TimerForm.jsx',
       applicationStyles: 'app/styles/app.scss'
     },
     extensions: ['', '.js', '.jsx']

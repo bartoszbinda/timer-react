@@ -1,7 +1,7 @@
 {
-  "name": "boilerplate",
+  "name": "react-timer",
   "version": "1.0.0",
-  "description": "boilerplate",
+  "description": "It's a timer app",
   "main": "index.js",
   "scripts": {
     "test": "karma start",
@@ -10,7 +10,7 @@
   "author": "Bartosz Binda",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/bartoszbinda/managing-sport-club-front.git"
   },
   "license": "MIT",
   "dependencies": {

@@ -2,7 +2,7 @@ var React = require('react');
 var Clock = require('Clock');
 var CountdownForm = require('CountdownForm');
 var Controls = require('Controls');
-
+require('style!css!foundation-sites/dist/css/foundation.min.css');
 var Countdown = React.createClass({
   getInitialState: function () {
     return {

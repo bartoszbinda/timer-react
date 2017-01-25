@@ -7,28 +7,32 @@ var $ = require('jquery');
 var CountdownForm = require('CountdownForm');
 
 describe("CountdownForm", () => {
-  it('should exists', () => {
-    expect(CountdownForm).toExist();
-  });
-  it('should call onSetCountdown if valid seconds entered', () => {
-    var spy = expect.createSpy();
-    var countdownForm = TestUtils.renderIntoDocument(<CountdownForm onSetCountdown={spy}/>);
-    var $el = $(ReactDOM.findDOMNode(countdownForm));
+    it('should exists', () => {
+        expect(CountdownForm).toExist();
+    });
+    it('should call onSetCountdown if valid seconds entered', () => {
+        var spy = expect.createSpy();
+        var countdownForm = TestUtils.renderIntoDocument(<CountdownForm onSetCountdown={spy}/>);
+        var $el = $(ReactDOM.findDOMNode(countdownForm));
 
-    countdownForm.refs.seconds.value = '109';
-    TestUtils.Simulate.submit($el.find('form')[0]);
+        countdownForm.refs.seconds.value = '109';
+        TestUtils
+            .Simulate
+            .submit($el.find('form')[0]);
 
-    expect(spy).toHaveBeenCalledWith(109);
+        expect(spy).toHaveBeenCalledWith(109);
 
-  });
-it('shouldnt called onSetCountdown with invalid seconds entered', () => {
-  var spy =expect.createSpy();
-  var countdownForm = TestUtils.renderIntoDocument(<CountdownForm onSetCountdown={spy}/>);
-  var $el = $(ReactDOM.findDOMNode(countdownForm));
+    });
+    it('shouldnt called onSetCountdown with invalid seconds entered', () => {
+        var spy = expect.createSpy();
+        var countdownForm = TestUtils.renderIntoDocument(<CountdownForm onSetCountdown={spy}/>);
+        var $el = $(ReactDOM.findDOMNode(countdownForm));
 
-  countdownForm.refs.seconds.value = 'nan';
-  TestUtils.Simulate.submit($el.find('form')[0]);
-  expect(spy).toNotHaveBeenCalled();
-})
+        countdownForm.refs.seconds.value = 'nan';
+        TestUtils
+            .Simulate
+            .submit($el.find('form')[0]);
+        expect(spy).toNotHaveBeenCalled();
+    })
 
 });

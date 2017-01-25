@@ -6,20 +6,17 @@ var Timer = require('Timer');
 var Countdown = require('Countdown');
 
 //Load foundation
-require('style!css!foundation-sites/dist/foundation.min.css');
+require('style!css!foundation-sites/dist/css/foundation.min.css');
 $(document).foundation();
-
 //load custom css
 require('style!css!sass!applicationStyles')
 
 ReactDOM.render(
-  <Router history={hashHistory}>
+    <Router history={hashHistory}>
     <Route path="/" component={Main}>
-      <Route path="countdown" component={Countdown} />
-      <IndexRoute component={Timer}/>
+        <Route path="countdown" component={Countdown}/>
+        <IndexRoute component={Timer}/>
 
     </Route>
 
-  </Router>,
-  document.getElementById('app')
-);
+</Router>, document.getElementById('app'));
